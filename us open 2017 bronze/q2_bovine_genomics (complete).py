@@ -1,4 +1,4 @@
-#8:15
+#30 min
 fil = open("cownomics.in")
 ans = 0
 n, m = fil.readline().split()
