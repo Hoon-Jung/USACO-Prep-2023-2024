@@ -1,4 +1,4 @@
-#Solved in 30 min (used for USACO Club dimenstration so I had to change up my style to get people to understand)
+#Solved in 30 min (used for USACO Club demonstration so I had to change up my style to get people to understand)
 fil = open("speeding.in")
 
 n, m = fil.readline().split()
