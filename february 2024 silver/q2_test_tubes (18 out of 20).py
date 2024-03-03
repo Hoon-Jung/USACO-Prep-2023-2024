@@ -1,17 +1,11 @@
 def simplify(tube1, tube2):
-    prev1 = tube1[0]
-    prev2 = tube2[0]
-    newtube1 = []
-    newtube2 = []
+    newtube1 = [tube1[0]]
+    newtube2 = [tube2[0]]
     for i in range(len(tube1)-1):
-        if tube1[i+1] != prev1:
-            newtube1.append(prev1)
-            prev1 = tube1[i+1]
-        if tube2[i+1] != prev2:
-            newtube2.append(prev2)
-            prev2 = tube2[i+1]
-    newtube1.append(prev1)
-    newtube2.append(prev2)
+        if tube1[i+1] != newtube1[-1]:
+            newtube1.append(tube1[i+1])
+        if tube2[i+1] != newtube2[-1]:
+            newtube2.append(tube2[i+1])
     return newtube1, newtube2
 
 
@@ -40,56 +34,49 @@ def solve2and3(t1, t2):
     if t1[-1] == t2[-1]:
         if len(t1) > 1:
             t1.pop()
-            moves.append([1, 2])
+            print(1, 2)
         else:
             t2.pop()
-            moves.append([2, 1])
+            print(2, 1)
 
     if len(t1) + len(t2) == 2:
-        return moves
+        return
     if len(t1) > 1:
         b.append(t1.pop())
-        moves.append([1, 3])
+        print(1, 3)
     else:
         b.append(t2.pop())
-        moves.append([2, 3])
+        print(2, 3)
 
 
     if t2[0] != b[0]:
         for _ in range(len(t2)-1):
-            if t1[-1] == t2[-1]:
-                t2.pop()
-                moves.append([2, 1])
+            if t1[-1] == t2.pop():
+                print(2, 1)
             else:
-                t2.pop()
-                moves.append([2, 3])
+                print(2, 3)
+            
         for _ in range(len(t1)-1):
-            if t2[-1] == t1[-1]:
-                t1.pop()
-                moves.append([1, 2])
+            if t2[-1] == t1.pop():
+                print(1, 2)
             else:
-                t1.pop()
-                moves.append([1, 3])
+                print(1, 3)
     else:
         for _ in range(len(t1)-1):
-            if t2[-1] == t1[-1]:
-                t1.pop()
-                moves.append([1, 2])
+            if t2[-1] == t1.pop():
+                print(1, 2)
             else:
-                t1.pop()
-                moves.append([1, 3])
+                print(1, 3)
         for _ in range(len(t2)-1):
-            if t1[-1] == t2[-1]:
-                t2.pop()
-                moves.append([2, 1])
+            if t1[-1] == t2.pop():
+                print(2, 1)
             else:
-                t2.pop()
-                moves.append([2, 3])
+                print(2, 3)
+            
     if b[0] == t1[0]:
-        moves.append([3, 1])
+        print(3, 1)
     else:
-        moves.append([3, 2])
-    return moves
+        print(3, 2)
     
 
 
@@ -100,5 +87,4 @@ for _ in range(int(input())):
     tube2 = input()
     print(solve1(tube1, tube2))
     if solvecase != 1:
-        for x, y in solve2and3(tube1, tube2):
-            print(x, y)
+        solve2and3(tube1, tube2)
