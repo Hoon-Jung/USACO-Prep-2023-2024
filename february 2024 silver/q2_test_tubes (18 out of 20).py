@@ -1,3 +1,5 @@
+#3 hours (including time trying to fix time complexity issues)
+
 def simplify(tube1, tube2):
     newtube1 = [tube1[0]]
     newtube2 = [tube2[0]]
